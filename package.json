@@ -1,7 +1,7 @@
 {
   "name": "todolist",
   "version": "1.0.0",
-  "description": "",
+  "description": "To be more productive made a to do list using node.js, express.js, mongoDB and EJS. Hosted the application on heroku.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,5 +17,14 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "mongoose": "^5.13.6"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aryan-9211/todolist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aryan-9211/todolist/issues"
+  },
+  "homepage": "https://github.com/Aryan-9211/todolist#readme"
 }

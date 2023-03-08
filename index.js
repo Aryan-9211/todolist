@@ -14,12 +14,15 @@ app.use(
 app.use(express.static("public"));
 
 mongoose
-  .connect("mongodb+srv://aryan:aryan@cluster0.gbobx.mongodb.net/todolist", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
+  .connect(
+    "mongodb+srv://aryan:aryan@cluster0.bzixf40.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }
+  )
   .then(() => console.log("connection successfull..."))
   .catch((err) => console.log(err));
 
@@ -32,7 +35,6 @@ const Item = mongoose.model("Item", itemsSchema);
 const item1 = new Item({
   name: "Be Happy",
 });
-
 
 const defaultItems = [item1];
 
@@ -59,31 +61,31 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
   const itemName = req.body.newItem;
-
-  const item = new Item ({
+  const item = new Item({
     name: itemName,
-  })
+  });
   item.save();
   res.redirect("/");
 });
 
 app.post("/delete", function (req, res) {
-   const checkedItemId = req.body.checkbox;
-   Item.findByIdAndRemove(checkedItemId, function(err){
+  const checkedItemId = req.body.checkbox;
+  Item.findByIdAndRemove(checkedItemId, function (err) {
     if (err) {
       console.log(err);
     } else {
       console.log("successfully saved");
     }
-   })
-   res.redirect("/");
+  });
+  res.redirect("/");
 });
-
 
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 }
+
+console.log(port);
 
 app.listen(port, function (req, res) {
   console.log("server started");
